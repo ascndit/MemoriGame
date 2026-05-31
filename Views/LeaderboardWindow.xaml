@@ -1,0 +1,41 @@
+﻿<Window x:Class="MemoriGame.Views.LeaderboardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="🏆 Таблица рекордов" 
+        Height="500" Width="600"
+        WindowStartupLocation="CenterOwner"
+        Background="#2C3E50">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="🏆 Топ игроков" FontSize="28" FontWeight="Bold" 
+                   Foreground="#F39C12" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+            <Button x:Name="EasyBtn" Content="Easy (2x2)" Click="EasyBtn_Click" 
+                    Width="100" Height="35" Margin="5" Background="#3498DB" Foreground="White" Cursor="Hand"/>
+            <Button x:Name="MediumBtn" Content="Medium (4x4)" Click="MediumBtn_Click" 
+                    Width="100" Height="35" Margin="5" Background="#3498DB" Foreground="White" Cursor="Hand"/>
+            <Button x:Name="HardBtn" Content="Hard (6x6)" Click="HardBtn_Click" 
+                    Width="100" Height="35" Margin="5" Background="#3498DB" Foreground="White" Cursor="Hand"/>
+        </StackPanel>
+
+        <ListView x:Name="LeaderboardList" Grid.Row="2" 
+                  Background="#34495E" Foreground="White" FontSize="14">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="№" Width="50" DisplayMemberBinding="{Binding Rank}"/>
+                    <GridViewColumn Header="Игрок" Width="150" DisplayMemberBinding="{Binding PlayerName}"/>
+                    <GridViewColumn Header="Ходы" Width="100" DisplayMemberBinding="{Binding Moves}"/>
+                    <GridViewColumn Header="Время" Width="120" DisplayMemberBinding="{Binding Time}"/>
+                    <GridViewColumn Header="Дата" Width="150" DisplayMemberBinding="{Binding Date}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
